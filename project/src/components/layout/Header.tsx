@@ -29,11 +29,17 @@ const Header: React.FC = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-md' : 'bg-transparent'
+        isScrolled
+          ? 'bg-white/90 shadow-lg backdrop-blur'
+          : 'bg-gradient-to-r from-green-700 via-green-400 to-lime-300'
       }`}
     >
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <Link to="/" className="text-2xl font-bold text-blue-600">
+      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+        <Link
+          to="/"
+          className="flex items-center gap-2 text-3xl font-extrabold text-green-900 drop-shadow-lg tracking-wide"
+        >
+          <span className="bg-white rounded-full p-2 shadow text-green-700">🌱</span>
           CycleQuest
         </Link>
 
@@ -43,39 +49,43 @@ const Header: React.FC = () => {
             <Link
               key={link.path}
               to={link.path}
-              className={`font-medium transition-colors duration-200 ${
+              className={`relative font-semibold px-3 py-1 rounded transition-all duration-200 ${
                 location.pathname === link.path
-                  ? 'text-blue-600'
-                  : isScrolled
-                  ? 'text-gray-800 hover:text-blue-600'
-                  : 'text-gray-800 hover:text-blue-600'
+                  ? 'bg-white text-green-700 shadow'
+                  : 'text-white hover:bg-white/20 hover:text-green-900'
               }`}
             >
               {link.name}
+              {location.pathname === link.path && (
+                <span className="absolute left-1/2 -bottom-1 w-2 h-2 bg-green-700 rounded-full -translate-x-1/2"></span>
+              )}
             </Link>
           ))}
         </nav>
 
         {/* Mobile Menu Button */}
-        <button className="md:hidden text-gray-800" onClick={toggleMenu}>
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        <button
+          className="md:hidden text-white bg-green-700 rounded-full p-2 shadow hover:bg-green-800 transition"
+          onClick={toggleMenu}
+        >
+          {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="md:hidden bg-white border-t">
+        <div className="md:hidden bg-white/95 border-t shadow-lg backdrop-blur">
           <div className="container mx-auto px-4 py-2">
-            <nav className="flex flex-col space-y-4 py-4">
+            <nav className="flex flex-col space-y-3 py-4">
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
                   onClick={() => setIsMenuOpen(false)}
-                  className={`font-medium py-2 transition-colors duration-200 ${
+                  className={`font-semibold px-3 py-2 rounded transition-colors duration-200 ${
                     location.pathname === link.path
-                      ? 'text-blue-600'
-                      : 'text-gray-800 hover:text-blue-600'
+                      ? 'bg-green-700 text-white shadow'
+                      : 'text-green-800 hover:bg-green-100'
                   }`}
                 >
                   {link.name}
