@@ -7,8 +7,6 @@ const HomePage: React.FC = () => {
   return (
     <main>
       <HeroSection />
-      <FeatureSection />
-      <StatsSection />
     </main>
   );
 };

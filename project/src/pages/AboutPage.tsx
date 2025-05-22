@@ -1,10 +1,10 @@
 import React from 'react';
-import InfoSection from '../components/about/InfoSection';
+import Instruction from '../components/home/Instruction.tsx';
 
 const AboutPage: React.FC = () => {
   return (
     <main className="">      
-      <InfoSection />
+      <Instruction />
     </main>
   );
 };
