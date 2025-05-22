@@ -9,14 +9,14 @@ const features = [
     description:
       'Relevez des défis quotidiens et saisonniers dans des environnements variés, du bitume aux sentiers de montagne.',
     image:
-      'https://i.pinimg.com/736x/43/29/dd/4329ddae4a43cbdc4709791d39daedc1.jpg',
+      '/src/img/challenge.jpg',
   },
   {
     title: 'Communauté Active',
     description:
       'Partagez vos créations, échangez des astuces et participez à des événements communautaires passionnants.',
     image:
-      'https://i.pinimg.com/736x/01/46/f3/0146f3f051844a34dc1e39b44d3a4ceb.jpg',
+      '/src/img/communaute.jpg',
   },
 ];
 
@@ -35,7 +35,7 @@ const InfoSection: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
           <Card className="overflow-hidden bg-white rounded-2xl border border-green-100 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
             <img
-              src="https://images.pexels.com/photos/163491/bike-mountain-mountain-biking-trail-163491.jpeg?auto=compress&cs=tinysrgb&w=800"
+              src="src/img/yaks.jpeg"
               alt="Cyclisme de montagne"
               className="w-full h-60 object-cover"
             />
@@ -49,7 +49,7 @@ const InfoSection: React.FC = () => {
 
           <Card className="overflow-hidden bg-white rounded-2xl border border-green-100 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
             <img
-              src="https://images.pexels.com/photos/38296/cycling-bicycle-riding-sport-38296.jpeg?auto=compress&cs=tinysrgb&w=800"
+              src="/src/img/keyboard.jpg"
               alt="Compétition cycliste"
               className="w-full h-60 object-cover"
             />
