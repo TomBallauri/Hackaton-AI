@@ -5,20 +5,24 @@ import BasketsArea from './BasketsArea';
 
 const GameBoard: React.FC = () => {
   const { level, categories } = useGame();
-  
+
   return (
-    <div className="flex-1 flex flex-col gap-8">
-      <div className="text-center mb-4">
-        <h2 className="text-xl font-semibold text-gray-700">
+    <div className="flex-1 flex flex-col justify-between min-h-[70vh]">
+      {/* Boîtes en haut */}
+      <div className="mb-8">
+        <h2 className="text-xl font-semibold text-gray-700 text-center">
           Level {level}: Sort the items into the correct baskets
         </h2>
-        <p className="text-gray-600 mt-1">
+        <p className="text-gray-600 mt-1 text-center">
           Drag each item to its corresponding basket
         </p>
+        <div className="mt-8 flex justify-center gap-8">
+          <BasketsArea categories={categories} />
+        </div>
       </div>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 flex-1">
-        <BasketsArea categories={categories} />
+
+      {/* Objets à déplacer en bas */}
+      <div className="w-full flex justify-center fixed left-0 bottom-0 pb-8 bg-gradient-to-t from-white via-white/80 to-transparent z-20">
         <ItemsArea />
       </div>
     </div>
