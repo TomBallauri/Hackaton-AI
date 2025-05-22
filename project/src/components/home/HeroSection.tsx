@@ -26,7 +26,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
     },
     {
       title: "",
-      subtitle: "30 % des déchets qu’on jette dans les "
+      subtitle: "30 % des déchets qu'on jette dans les "
     },
     {
       title: "",
@@ -38,7 +38,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
     },
         {
       title: "",
-      subtitle: "c’est 271 kg de CO₂ dans l’atmosphère…"
+      subtitle: "c'est 271 kg de CO₂ dans l'atmosphère…"
     },
     {
       title: "",
@@ -46,7 +46,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
     },
     {
       title: "",
-      subtitle: "c’est 17 arbres sauvés et 2 500 litres d’eau économisés."
+      subtitle: "c'est 17 arbres sauvés et 2 500 litres d'eau économisés."
     },
     {
       title: "",
@@ -54,7 +54,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
     },
     {
       title: "",
-      subtitle: "C’est parti pour le jeu ! "
+      subtitle: "C'est parti pour le jeu ! "
     },
 
   ]
@@ -93,12 +93,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       </div>
       <div className="absolute top-8 left-24 w-1/3 h-1/3 z-20" style={{
           backgroundImage:
-            'url(../src/img/Leonardo_Phoenix_10_Create_a_2D_pixel_art_speech_bubble_in_the_3.png',
+            'url(/image/Leonardo_Phoenix_10_Create_a_2D_pixel_art_speech_bubble_in_the_3.png',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'contain'
-        }}
-      >
+        }}>
         <div className="w-full h-full flex flex-col items-center justify-center cursor-pointer" onClick={handleClick}>
           <div className="text-center">
             <div className="animate-fade-in" key={currentState}>
@@ -115,7 +114,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       </div>
       <div className='absolute h-screen w-screen flex items-end justify-end z-10 animate-float' style={{
           backgroundImage:
-            'url(../src/img/ChatGPT_Image_22_mai_2025__11_50_29-removebg-preview.png)', 
+            'url(/image/ChatGPT_Image_22_mai_2025__11_50_29-removebg-preview.png)', 
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'contain'
@@ -155,6 +154,15 @@ const styles = `
   }
   50% {
     transform: translateY(-10px) rotate(90deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 

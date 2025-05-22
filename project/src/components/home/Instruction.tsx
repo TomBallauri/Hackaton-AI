@@ -23,34 +23,9 @@ const Instruction: React.FC<InstructionProps> = ({
       subtitle: "Je suis là pour vous aider"
     },
     {
-      title: "",
-      subtitle: " Regarde bien ton compagnon sur son vélo électrique… Ce n’est pas juste une balade, c’est un geste pour la planète !"
-    },
-    {
-      title: "",
-      subtitle: "Tu sais pourquoi c’est important ? Le transport représente plus de 30 % des émissions de CO₂ en France."
-    },
-        {
-      title: "",
-      subtitle: "Et en ville, 70 % des trajets font moins de 5 km."
-    },
-        {
-      title: "",
-      subtitle: "Autant dire que c’est pile la bonne distance pour enfourcher un vélo !"
-    },
-        {
-      title: "",
-      subtitle: " En choisissant un vélo électrique plutôt qu’une voiture, on peut économiser jusqu’à 90 % d’émissions de CO₂ à chaque trajet. Pas mal, non ?"
-    },
-        {
-      title: "",
-      subtitle: "Et ce n’est pas tout… Le vélo électrique, c’est zéro émission directe, c’est silencieux, rapide, pratique… Et en bonus : c’est bon pour ta santé !"
-    },
-    {
-      title: "",
-      subtitle: "Alors, prêt à pédaler pour un avenir plus vert ? "
+      title: "Découvrez nos services",
+      subtitle: "Nous avons beaucoup à vous offrir"
     }
-    
   ]
 }) => {
   const [currentState, setCurrentState] = useState(0);
@@ -79,27 +54,25 @@ const Instruction: React.FC<InstructionProps> = ({
       <div
         className="absolute inset-0 z-0 bg-cover bg-center"
         style={{
-          backgroundImage: 'url(../src/img/Leonardo_Phoenix_10_Create_a_2D_pixel_art_background_inspired_0.jpg)',
+          backgroundImage:
+            'url(/image/Leonardo_Phoenix_10_Create_a_2D_pixel_art_background_inspired_0.jpg)', 
           opacity: 0.96,
         }}
       />
 
-      <div 
-        className="absolute top-8 left-72 w-[500px] h-[500px] z-20 bg-white rounded-lg" 
-        style={{
-          backgroundImage: 'url(../src/img/pj8KDG2jRz4AAAAASUVORK5CYII.png)',
+      <div className="absolute top-8 left-72 w-[500px] h-[500px] z-20 bg-white rounded-lg" style={{
+          backgroundImage:
+            'url(/image/pj8KDG2jRz4AAAAASUVORK5CYII.png)',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'contain'
-        }}
-      />
+        }}></div>
 
-      <div className="absolute inset-0 z-10 bg-gradient-to-b from-transparent to-green-900 opacity-50" />
-
-      <div 
-        className="absolute bottom-8 left-24 w-1/2 h-1/2 z-20" 
-        style={{
-          backgroundImage: 'url(../src/img/Leonardo_Phoenix_10_Create_a_2D_pixel_art_speech_bubble_in_the_3.png)',
+      <div className="absolute inset-0 z-10 bg-gradient-to-b from-transparent to-green-900 opacity-50">
+      </div>
+      <div className="absolute bottom-8 left-24 w-1/2 h-1/2 z-20" style={{
+          backgroundImage:
+            'url(/image/Leonardo_Phoenix_10_Create_a_2D_pixel_art_speech_bubble_in_the_3.png)',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'contain'
@@ -119,17 +92,14 @@ const Instruction: React.FC<InstructionProps> = ({
           </div>
         </div>
       </div>
-
-      <div 
-        className='absolute h-screen w-screen flex items-end justify-end z-10 animate-float' 
-        style={{
-          backgroundImage: 'url(../src/img/ChatGPT_Image_22_mai_2025__11_50_29-removebg-preview.png)',
+      <div className='absolute h-screen w-screen flex items-end justify-end z-10 animate-float' style={{
+          backgroundImage:
+            'url(/image/ChatGPT_Image_22_mai_2025__11_50_29-removebg-preview.png)', 
           backgroundPosition: 'bottom right',
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'contain',
           transform: 'translateX(-5%) translateY(-5%)'
-        }}
-      />
+        }}></div>
     </section>
   );
 };
@@ -137,24 +107,44 @@ const Instruction: React.FC<InstructionProps> = ({
 // Styles d'animation
 const styles = `
 @keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-  100% { transform: translateY(0px); }
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 @keyframes typing {
-  from { width: 0; opacity: 0; }
-  to { width: 100%; opacity: 1; }
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 100%;
+    opacity: 1;
+  }
 }
 
 @keyframes bounce {
-  0%, 100% { transform: translateY(0) rotate(90deg); }
-  50% { transform: translateY(-10px) rotate(90deg); }
+  0%, 100% {
+    transform: translateY(0) rotate(90deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(90deg);
+  }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .typing-text {
