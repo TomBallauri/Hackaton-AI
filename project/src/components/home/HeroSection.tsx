@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Leaf, ChevronRight } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
-import bg from "/image/Leonardo_Phoenix_10_Create_a_2D_pixel_art_background_inspired_0.jpg";
 interface TextState {
   title: string;
   subtitle: string;
@@ -86,7 +85,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       <div
         className="absolute inset-0 z-0 bg-cover bg-center"
         style={{
-          backgroundImage: `url(${bg})`,
+          backgroundImage:"url(/image/Leonardo_Phoenix_10_Create_a_2D_pixel_art_background_inspired_0.jpg)",
           opacity: 0.96,
         }}
       ></div>
