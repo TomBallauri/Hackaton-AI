@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { ShoppingBasket, Play } from 'lucide-react';
 
 interface GameStartProps {
   onStart: () => void;

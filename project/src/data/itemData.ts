@@ -31,28 +31,28 @@ export const categories: Record<CategoryType, Category> = {
 // Item data by category
 export const itemsData: Record<CategoryType, Array<{ name: string, image: string }>> = {
   organique: [
-    { name: 'Pomme', image: '/src/img/item/Apple.png' },
-    { name: 'Banane', image: '/src/img/item/Banana peel.png' },
-    { name: 'Carotte', image: '/src/img/item/Carrot.png' },
-    { name: 'Tomate', image: '/src/img/item/Tomato.png' },
-    { name: 'Avocat', image: '/src/img/item/Avocado.png' },
+    { name: 'Pomme', image: '/image/item/Apple.png' },
+    { name: 'Banane', image: '/image/item/Banana peel.png' },
+    { name: 'Carotte', image: '/image/item/Carrot.png' },
+    { name: 'Tomate', image: '/image/item/Tomato.png' },
+    { name: 'Avocat', image: '/image/item/Avocado.png' },
   ],
   plastique: [
-    { name: 'Bouteille en plastique', image: '/src/img/item/Plastic Bottle.png'},
-    { name: 'Sac plastique', image: '/src/img/item/Chips bag.png' },
-    { name: 'Pot de yaourt', image: '/src/img/item/Yogurt.png' },
-    { name: 'Emballage chips', image: '/src/img/item/Chips bag.png' },
+    { name: 'Bouteille en plastique', image: '/image/item/Plastic Bottle.png'},
+    { name: 'Sac plastique', image: '/image/item/Chips bag.png' },
+    { name: 'Pot de yaourt', image: '/image/item/Yogurt.png' },
+    { name: 'Emballage chips', image: '/image/item/Chips bag.png' },
   ],
   papier: [
-    { name: 'Journal', image: '/src/img/item/Journal.png' },
-    { name: 'Cahier', image: '/src/img/item/Paper bag.png' },
-    { name: 'Carton', image: '/src/img/item/Cardboard.png' },
-    { name: 'Papier brouillon', image: '/src/img/item/Paper bag.png' },
+    { name: 'Journal', image: '/image/item/Journal.png' },
+    { name: 'Cahier', image: '/image/item/Paper bag.png' },
+    { name: 'Carton', image: '/image/item/Cardboard.png' },
+    { name: 'Papier brouillon', image: '/image/item/Paper bag.png' },
   ],
   verre: [
-    { name: 'Bouteille en verre', image: '/src/img/item/Glass Bottle.png' },
-    { name: 'Pot de confiture', image: '/src/img/item/Jelly.png' },
-    { name: 'Bocal', image: '/src/img/item/Jar.png' },
+    { name: 'Bouteille en verre', image: '/image/item/Glass Bottle.png' },
+    { name: 'Pot de confiture', image: '/image/item/Jelly.png' },
+    { name: 'Bocal', image: '/image/item/Jar.png' },
   ],
 };
 
