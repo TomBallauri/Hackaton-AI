@@ -39,6 +39,15 @@ const Game: React.FC = () => {
     };
   }, []);
 
+  // Joue le son Ring Ring lors de l'affichage de la vidéo d'intro
+  useEffect(() => {
+    if (showIntro) {
+      const audio = new Audio('/sfx/Ring Ring Sound.mp3');
+      audio.volume = 0.5;
+      audio.play().catch(() => {});
+    }
+  }, [showIntro]);
+
   if (showIntro) {
     return (
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black">

@@ -50,6 +50,7 @@ const sounds = [
   '/sfx/Plastic%20Sound.mp3',
   '/sfx/Ring%20Ring%20Sound.mp3',
   '/sfx/Trashcan%20sound.mp3',
+  '/sfx/trash2.mp3',
   '/sfx/Validate_sound.mp3',
 ];
 
