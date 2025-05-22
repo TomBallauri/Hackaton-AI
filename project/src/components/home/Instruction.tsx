@@ -23,9 +23,34 @@ const Instruction: React.FC<InstructionProps> = ({
       subtitle: "Je suis là pour vous aider"
     },
     {
-      title: "Découvrez nos services",
-      subtitle: "Nous avons beaucoup à vous offrir"
+      title: "",
+      subtitle: " Regarde bien ton compagnon sur son vélo électrique… Ce n’est pas juste une balade, c’est un geste pour la planète !"
+    },
+    {
+      title: "",
+      subtitle: "Tu sais pourquoi c’est important ? Le transport représente plus de 30 % des émissions de CO₂ en France."
+    },
+        {
+      title: "",
+      subtitle: "Et en ville, 70 % des trajets font moins de 5 km."
+    },
+        {
+      title: "",
+      subtitle: "Autant dire que c’est pile la bonne distance pour enfourcher un vélo !"
+    },
+        {
+      title: "",
+      subtitle: " En choisissant un vélo électrique plutôt qu’une voiture, on peut économiser jusqu’à 90 % d’émissions de CO₂ à chaque trajet. Pas mal, non ?"
+    },
+        {
+      title: "",
+      subtitle: "Et ce n’est pas tout… Le vélo électrique, c’est zéro émission directe, c’est silencieux, rapide, pratique… Et en bonus : c’est bon pour ta santé !"
+    },
+    {
+      title: "",
+      subtitle: "Alors, prêt à pédaler pour un avenir plus vert ? "
     }
+    
   ]
 }) => {
   const [currentState, setCurrentState] = useState(0);
