@@ -26,7 +26,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
     },
     {
       title: "",
-      subtitle: "30 % des déchets qu’on jette dans les "
+      subtitle: "30 % des déchets qu'on jette dans les "
     },
     {
       title: "",
@@ -38,7 +38,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
     },
         {
       title: "",
-      subtitle: "c’est 271 kg de CO₂ dans l’atmosphère…"
+      subtitle: "c'est 271 kg de CO₂ dans l'atmosphère…"
     },
     {
       title: "",
@@ -46,7 +46,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
     },
     {
       title: "",
-      subtitle: "c’est 17 arbres sauvés et 2 500 litres d’eau économisés."
+      subtitle: "c'est 17 arbres sauvés et 2 500 litres d'eau économisés."
     },
     {
       title: "",
@@ -54,7 +54,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
     },
     {
       title: "",
-      subtitle: "C’est parti pour le jeu ! "
+      subtitle: "C'est parti pour le jeu ! "
     },
 
   ]
@@ -97,8 +97,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'contain'
-        }}
-      >
+        }}>
         <div className="w-full h-full flex flex-col items-center justify-center cursor-pointer" onClick={handleClick}>
           <div className="text-center">
             <div className="animate-fade-in" key={currentState}>
@@ -155,6 +154,15 @@ const styles = `
   }
   50% {
     transform: translateY(-10px) rotate(90deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 

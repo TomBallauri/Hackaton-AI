@@ -23,7 +23,7 @@ const AnimationSection: React.FC<AnimationSectionProps> = ({
       subtitle: "Une fois l'animation terminée"
     }
   ],
-  gifUrl = "../src/img/animation.gif"
+  gifUrl = "/image/animation.gif"
 }) => {
   const [currentState, setCurrentState] = useState(0);
   const [showClickIndicator, setShowClickIndicator] = useState(false);
@@ -33,7 +33,7 @@ const AnimationSection: React.FC<AnimationSectionProps> = ({
     setShowClickIndicator(false);
     const timer = setTimeout(() => {
       setShowClickIndicator(true);
-    }, 1000);
+    }, 500);
 
     return () => clearTimeout(timer);
   }, [currentState]);
@@ -63,7 +63,7 @@ const AnimationSection: React.FC<AnimationSectionProps> = ({
   
       >
         <img 
-          src={'../src/img/05221-ezgif.com-video-to-gif-converter.gif'}
+          src={'/image/05221-ezgif.com-video-to-gif-converter.gif'}
           alt="Animation"
           className="w-full h-full object-contain"
         />
@@ -74,16 +74,16 @@ const AnimationSection: React.FC<AnimationSectionProps> = ({
 
       {/* Bulle de dialogue */}
       <div 
-        className="absolute bottom-8 left-24 w-1/2 h-1/2 z-20" 
+        className="absolute bottom-8 left-24 w-2/3 h-1/3 z-20" 
         style={{
-          backgroundImage: 'url(../src/img/Leonardo_Phoenix_10_Create_a_2D_pixel_art_speech_bubble_in_the_3.png)',
+          backgroundImage: 'url(/image/Leonardo_Phoenix_10_Create_a_2D_pixel_art_speech_bubble_in_the_3.png)',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'contain'
         }}
       >
         <div className="w-full h-full flex flex-col items-center justify-center cursor-pointer" onClick={handleClick}>
-          <div className="text-center">
+          <div className="text-center w-4/5">
             <div className="animate-fade-in" key={currentState}>
               <p className="text-xl font-bold text-black typing-text">{textStates[currentState].title}</p>
               <p className="text-sm text-black mt-2 typing-text-delayed">{textStates[currentState].subtitle}</p>
@@ -102,9 +102,20 @@ const AnimationSection: React.FC<AnimationSectionProps> = ({
 
 // Styles d'animation
 const styles = `
+@font-face {
+  font-family: 'Minecraft';
+  src: url('/fonts/Minecraft.ttf') format('truetype');
+}
+
 @keyframes typing {
-  from { width: 0; opacity: 0; }
-  to { width: 100%; opacity: 1; }
+  from { 
+    width: 0;
+    opacity: 0;
+  }
+  to { 
+    width: 100%;
+    opacity: 1;
+  }
 }
 
 @keyframes bounce {
@@ -119,26 +130,45 @@ const styles = `
 
 .typing-text {
   overflow: hidden;
-  white-space: nowrap;
-  animation: typing 1s steps(20, end);
+  white-space: normal;
+  animation: typing 0.5s steps(20, end);
   margin: 0 auto;
+  font-family: 'Minecraft', sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  width: 100%;
+  max-width: 100%;
+  word-wrap: break-word;
+  text-align: center;
+  padding: 0 1rem;
+  box-sizing: border-box;
 }
 
 .typing-text-delayed {
   overflow: hidden;
-  white-space: nowrap;
-  animation: typing 1s steps(30, end) 1s;
+  white-space: normal;
+  animation: typing 0.5s steps(30, end) 0.3s;
   margin: 0 auto;
   opacity: 0;
   animation-fill-mode: forwards;
+  font-family: 'Minecraft', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  width: 100%;
+  max-width: 100%;
+  word-wrap: break-word;
+  text-align: center;
+  padding: 0 1rem;
+  margin-top: 0.5rem;
+  box-sizing: border-box;
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.5s ease-out forwards;
+  animation: fadeIn 0.3s ease-out forwards;
 }
 
 .animate-bounce {
-  animation: bounce 1s ease-in-out infinite;
+  animation: bounce 0.8s ease-in-out infinite;
 }
 `;
 

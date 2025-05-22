@@ -12,9 +12,39 @@ const DraggableItem: React.FC<DraggableItemProps> = ({ item }) => {
   // On affiche l'image "suiveuse" en position absolue si isDragging est true
   const [mouse, setMouse] = useState<{x: number, y: number} | null>(null);
 
+  const playGrabSound = () => {
+    // Associe chaque item à un son spécifique
+    const soundMap: Record<string, string> = {
+      'Pomme': '/sfx/Apple Sound.mp3',
+      'Banane': '/sfx/Apple Sound.mp3', // à remplacer si tu as un son spécifique
+      'Carotte': '/sfx/Apple Sound.mp3', // à remplacer si tu as un son spécifique
+      'Tomate': '/sfx/Apple Sound.mp3', // à remplacer si tu as un son spécifique
+      'Avocat': '/sfx/Apple Sound.mp3', // à remplacer si tu as un son spécifique
+      'Bouteille en plastique': '/sfx/Plastic Sound.mp3',
+      'Sac plastique': '/sfx/Plastic Sound.mp3',
+      'Pot de yaourt': '/sfx/Plastic Sound.mp3',
+      'Emballage chips': '/sfx/Plastic Sound.mp3',
+      'Journal': '/sfx/Paper Sound.mp3',
+      'Cahier': '/sfx/Paper Sound.mp3',
+      'Carton': '/sfx/Cardboard Sound.mp3',
+      'Papier brouillon': '/sfx/Paper Sound.mp3',
+      'Bouteille en verre': '/sfx/Glass Sound.mp3',
+      'Pot de confiture': '/sfx/Glass Sound.mp3',
+      'Bocal': '/sfx/Glass Sound.mp3',
+      'Battery': '/sfx/Battery Sound.mp3',
+      'Can': '/sfx/Can Sound.mp3',
+      'Phone': '/sfx/Ring Ring Sound.mp3',
+    };
+    const sound = soundMap[item.name] || '/sfx/Trashcan sound.mp3';
+    const audio = new Audio(sound);
+    audio.volume = 0.5;
+    audio.play().catch(() => {});
+  };
+
   const handleDragStart = (e: React.DragEvent<HTMLDivElement>) => {
     e.dataTransfer.setData('itemId', item.id);
     setIsDragging(true);
+    playGrabSound();
 
     // Play drag sound
     const audio = new Audio('/sounds/drag.mp3');
