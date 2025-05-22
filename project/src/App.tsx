@@ -11,6 +11,7 @@ function App() {
   return (
     <div className="flex flex-col min-h-screen">
       <MediaPreloader />
+      <audio src="/sfx/OST.mp3" autoPlay loop controls style={{ display: 'none' }} />
       <ScrollToTop />
       <div className="flex-grow">
         <Routes>
