@@ -98,7 +98,7 @@ const AnimationSection: React.FC<AnimationSectionProps> = ({
 
       {/* Bulle de dialogue */}
       <div 
-        className="absolute bottom-8 left-24 w-2/3 h-1/3 z-20" 
+        className="absolute bottom-1/2 left-8 w-2/3 h-1/3 z-20" 
         style={{
           backgroundImage: 'url(/image/Leonardo_Phoenix_10_Create_a_2D_pixel_art_speech_bubble_in_the_3.png)',
           backgroundPosition: 'center',
