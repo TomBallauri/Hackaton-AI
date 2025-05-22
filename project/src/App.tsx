@@ -5,6 +5,7 @@ import ScrollToTop from './components/ScrollToTop';
 import AboutPage from './pages/AboutPage';
 import InstructionGame from './pages/InstructionGame';
 import MediaPreloader from './components/MediaPreloader';
+import Ending from './pages/Ending';
 
 function App() {
   return (
