@@ -42,7 +42,7 @@ const AnimationSection: React.FC<AnimationSectionProps> = ({
     if (currentState < textStates.length - 1) {
       setCurrentState(prev => prev + 1);
     } else {
-      navigate('/next-page');
+      navigate('/game');
     }
   };
 
