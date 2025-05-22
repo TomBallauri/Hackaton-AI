@@ -1,5 +1,7 @@
 import React from 'react';
 import Card from '../ui/Card';
+import { Link } from 'react-router-dom';
+import Button from '../ui/Button';
 
 const features = [
   {
@@ -93,12 +95,25 @@ const InfoSection: React.FC = () => {
             <p className="text-green-800 mb-6">
               Découvrez une nouvelle façon de vivre le cyclisme, partagez vos créations et affrontez des joueurs du monde entier.
             </p>
-            <a
-              href="#"
-              className="inline-block px-6 py-3 bg-green-700 text-white rounded-full font-semibold shadow hover:bg-green-800 transition"
-            >
-              🚀 Commencer l’aventure
-            </a>
+            <Link to="/">
+              <Button
+                variant="outline"
+                size="lg"
+                className="
+                  inline-block px-8 py-3
+                  bg-gradient-to-r from-green-600 to-green-400
+                  text-white font-bold text-lg
+                  rounded-full shadow-lg
+                  hover:from-green-700 hover:to-green-500
+                  hover:scale-105 hover:shadow-2xl
+                  transition-all duration-200
+                  focus:outline-none focus:ring-4 focus:ring-green-300
+                  active:scale-95
+                "
+              >
+                Notre engagement
+              </Button>
+            </Link>
           </Card>
         </div>
       </div>
