@@ -4,9 +4,12 @@ import GamePage from './pages/GamePage';
 import ScrollToTop from './components/ScrollToTop';
 import AboutPage from './pages/AboutPage';
 import InstructionGame from './pages/InstructionGame';
+import MediaPreloader from './components/MediaPreloader';
+
 function App() {
   return (
     <div className="flex flex-col min-h-screen">
+      <MediaPreloader />
       <ScrollToTop />
       <div className="flex-grow">
         <Routes>
