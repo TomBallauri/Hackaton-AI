@@ -24,35 +24,22 @@ const Basket: React.FC<BasketProps> = ({ category }) => {
   const handleOnDrop = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     const itemId = e.dataTransfer.getData('itemId');
+    // On récupère l'item pour savoir si c'est correct ou non
+    const item = items.find(i => i.id === itemId);
+    const isCorrect = item && item.category === category.id;
     handleDrop(itemId, category.id);
     setIsOver(false);
 
-    // Play item-specific sound
-    const item = items.find(i => i.id === itemId);
-    if (item) {
-      const soundMap: Record<string, string> = {
-        'Pomme': '/sfx/Apple Sound.mp3',
-        'Banane': '/sfx/Apple Sound.mp3', // à remplacer si tu as un son spécifique
-        'Carotte': '/sfx/Apple Sound.mp3',
-        'Tomate': '/sfx/Apple Sound.mp3',
-        'Avocat': '/sfx/Apple Sound.mp3',
-        'Bouteille en plastique': '/sfx/Plastic Sound.mp3',
-        'Sac plastique': '/sfx/Plastic Sound.mp3',
-        'Pot de yaourt': '/sfx/Plastic Sound.mp3',
-        'Emballage chips': '/sfx/Plastic Sound.mp3',
-        'Journal': '/sfx/Paper Sound.mp3',
-        'Cahier': '/sfx/Paper Sound.mp3',
-        'Carton': '/sfx/Cardboard Sound.mp3',
-        'Papier brouillon': '/sfx/Paper Sound.mp3',
-        'Bouteille en verre': '/sfx/Glass Sound.mp3',
-        'Pot de confiture': '/sfx/Glass Sound.mp3',
-        'Bocal': '/sfx/Glass Sound.mp3',
-        'Battery': '/sfx/Battery Sound.mp3',
-        'Can': '/sfx/Can Sound.mp3',
-        'Phone': '/sfx/Ring Ring Sound.mp3',
-      };
-      const sound = soundMap[item.name] || '/sfx/Trashcan sound.mp3';
+    if (isCorrect) {
+      // Play one of the two trashcan sounds randomly
+      const sounds = ['/sfx/Trashcan sound.mp3', '/sfx/trash2.mp3'];
+      const sound = sounds[Math.floor(Math.random() * sounds.length)];
       const audio = new Audio(sound);
+      audio.volume = 0.5;
+      audio.play().catch(() => {});
+    } else {
+      // Play error sound
+      const audio = new Audio('/sfx/Error Sound.m4a');
       audio.volume = 0.5;
       audio.play().catch(() => {});
     }
