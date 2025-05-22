@@ -43,7 +43,7 @@ const Game: React.FC = () => {
     return (
       <div className="flex items-center justify-center min-h-screen">
         <video
-          src="/Vidéo/Boy.mp4"
+          src="/vidéo/transition.webm"
           autoPlay
           playsInline
           muted
