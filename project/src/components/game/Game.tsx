@@ -30,12 +30,23 @@ const Game: React.FC = () => {
     }
   }, [level, gameStarted, gameOver, lastLevel]);
 
+  // Blocage global du scroll sur /game
+  useEffect(() => {
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = originalOverflow;
+    };
+  }, []);
+
   if (showIntro) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-gradient-to-b from-blue-50 to-indigo-100">
+      <div className="flex items-center justify-center min-h-screen">
         <video
-          src="/vidéo/Boy.mp4" 
+          src="/Vidéo/Boy.mp4"
           autoPlay
+          playsInline
+          muted
           className="rounded-xl shadow-lg max-w-full"
           onEnded={() => {
             setShowVideo(false);
@@ -48,7 +59,7 @@ const Game: React.FC = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 min-h-screen flex flex-col">
+    <div className="container mx-auto px-4 py-8 min-h-screen flex flex-col overflow-hidden" style={{ maxHeight: '100vh' }}>
       <GameHeader />
       {showLevelTransition && <LevelTransition level={level} />}
       {!gameStarted && !gameOver && <GameStart onStart={startGame} />}
