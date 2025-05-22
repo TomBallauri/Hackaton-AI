@@ -11,7 +11,7 @@ const GameHeader: React.FC = () => {
     <header className="bg-white rounded-xl shadow-md p-4 mb-6 flex flex-wrap justify-between items-center">
       <div className="flex items-center mb-2 md:mb-0">
         <ShoppingBasket className="mr-2 text-blue-600" size={24} />
-        <h1 className="text-2xl font-bold text-blue-600">Sort It Out!</h1>
+        <h1 className="text-2xl font-bold text-blue-600">CYCLEQUEST</h1>
       </div>
       
       <div className="flex gap-6">
