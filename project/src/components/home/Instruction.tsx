@@ -8,11 +8,11 @@ interface TextState {
   subtitle: string;
 }
 
-interface HeroSectionProps {
+interface InstructionProps {
   textStates: TextState[];
 }
 
-const HeroSection: React.FC<HeroSectionProps> = ({
+const Instruction: React.FC<InstructionProps> = ({
   textStates = [
     {
       title: "Bienvenue !",
@@ -23,7 +23,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       subtitle: "Je suis là pour vous aider"
     },
     {
-      title: "",
+      title: "Découvrez nos services",
       subtitle: "Nous avons beaucoup à vous offrir"
     }
   ]
@@ -36,7 +36,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
     setShowClickIndicator(false);
     const timer = setTimeout(() => {
       setShowClickIndicator(true);
-    }, 4000);
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, [currentState]);
@@ -45,8 +45,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
     if (currentState < textStates.length - 1) {
       setCurrentState(prev => prev + 1);
     } else {
-      // Redirection vers la page game après le dernier texte
-      navigate('/about');
+      navigate('/game');
     }
   };
 
@@ -59,10 +58,25 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             'url(../src/img/Leonardo_Phoenix_10_Create_a_2D_pixel_art_background_inspired_0.jpg)', 
           opacity: 0.96,
         }}
-      ></div>
+      >
+
+
+
+      </div>
+
+        <div className="absolute top-8 left-72 w-[500px] h-[500px] z-20 bg-white rounded-lg" style={{
+          backgroundImage:
+            'url(../src/img/pj8KDG2jRz4AAAAASUVORK5CYII.png',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'contain'
+        }}></div>
+
+
+
       <div className="absolute inset-0 z-10 bg-gradient-to-b from-transparent to-green-900 opacity-50">
       </div>
-      <div className="absolute top-8 left-24 w-1/3 h-1/3 z-20" style={{
+      <div className="absolute bottom-8 left-24 w-1/2 h-1/2 z-20" style={{
           backgroundImage:
             'url(../src/img/Leonardo_Phoenix_10_Create_a_2D_pixel_art_speech_bubble_in_the_3.png',
           backgroundPosition: 'center',
@@ -87,15 +101,16 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       <div className='absolute h-screen w-screen flex items-end justify-end z-10 animate-float' style={{
           backgroundImage:
             'url(../src/img/ChatGPT_Image_22_mai_2025__11_50_29-removebg-preview.png)', 
-          backgroundPosition: 'center',
+          backgroundPosition: 'bottom right',
           backgroundRepeat: 'no-repeat',
-          backgroundSize: 'contain'
+          backgroundSize: 'contain',
+          transform: 'translateX(-5%) translateY(-5%)'
         }}></div>
     </section>
   );
 };
 
-// Ajout des styles d'animation personnalisés
+// Styles d'animation
 const styles = `
 @keyframes float {
   0% {
@@ -129,17 +144,26 @@ const styles = `
   }
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .typing-text {
   overflow: hidden;
   white-space: nowrap;
-  animation: typing 2s steps(20, end);
+  animation: typing 1s steps(20, end);
   margin: 0 auto;
 }
 
 .typing-text-delayed {
   overflow: hidden;
   white-space: nowrap;
-  animation: typing 2s steps(30, end) 2s;
+  animation: typing 1s steps(30, end) 1s;
   margin: 0 auto;
   opacity: 0;
   animation-fill-mode: forwards;
@@ -159,8 +183,10 @@ const styles = `
 `;
 
 // Ajout du style dans le head du document
-const styleSheet = document.createElement("style");
-styleSheet.innerText = styles;
-document.head.appendChild(styleSheet);
+if (typeof document !== 'undefined') {
+  const styleSheet = document.createElement("style");
+  styleSheet.innerText = styles;
+  document.head.appendChild(styleSheet);
+}
 
-export default HeroSection;
+export default Instruction;
