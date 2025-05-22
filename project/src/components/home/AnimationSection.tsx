@@ -15,15 +15,39 @@ interface AnimationSectionProps {
 const AnimationSection: React.FC<AnimationSectionProps> = ({
   textStates = [
     {
-      title: "Animation en cours",
+      title: "Comment jouer ?",
       subtitle: "Regardez attentivement"
     },
     {
-      title: "Cliquez pour continuer",
-      subtitle: "Une fois l'animation terminée"
+      title: "",
+      subtitle: "c'est très simple"
+    }
+    ,
+    {
+      title: "",
+      subtitle: "Il faut juste placer les déchets dans le panier "
+    },
+    {
+      title: "",
+      subtitle: "fait bien attention à bien placer les déchets"
+    },
+    {
+        title: "",
+        subtitle: "en fonction de leur type"
+      },
+    {
+      title: "",
+      subtitle: "comme le montre la vidéo sur la droite"
+    },
+    {
+      title: "",
+      subtitle: "Tu es prêt pour l'aventure ?"
+    },
+    {
+      title: "Alors c'est parti !",
+      subtitle: ""
     }
   ],
-  gifUrl = "/image/animation.gif"
 }) => {
   const [currentState, setCurrentState] = useState(0);
   const [showClickIndicator, setShowClickIndicator] = useState(false);
@@ -42,7 +66,7 @@ const AnimationSection: React.FC<AnimationSectionProps> = ({
     if (currentState < textStates.length - 1) {
       setCurrentState(prev => prev + 1);
     } else {
-      navigate('/next-page');
+      navigate('/game');
     }
   };
 
@@ -83,8 +107,8 @@ const AnimationSection: React.FC<AnimationSectionProps> = ({
         }}
       >
         <div className="w-full h-full flex flex-col items-center justify-center cursor-pointer" onClick={handleClick}>
-          <div className="text-center w-4/5">
-            <div className="animate-fade-in" key={currentState}>
+          <div className="text-center h-[350px] w-[500px] flex items-center justify-center">
+            <div className="animate-fade-in w-full" key={currentState}>
               <p className="text-xl font-bold text-black typing-text">{textStates[currentState].title}</p>
               <p className="text-sm text-black mt-2 typing-text-delayed">{textStates[currentState].subtitle}</p>
               {showClickIndicator && (
@@ -108,13 +132,15 @@ const styles = `
 }
 
 @keyframes typing {
-  from { 
+  from {
     width: 0;
     opacity: 0;
+    transform: translateX(-20px);
   }
-  to { 
+  to {
     width: 100%;
     opacity: 1;
+    transform: translateX(0);
   }
 }
 
@@ -131,13 +157,14 @@ const styles = `
 .typing-text {
   overflow: hidden;
   white-space: normal;
-  animation: typing 0.5s steps(20, end);
+  animation: typing 1s ease-out;
   margin: 0 auto;
+  display: block;
+  width: 100%;
+  max-width: 500px;
   font-family: 'Minecraft', sans-serif;
   font-size: 1.2rem;
   letter-spacing: 1px;
-  width: 100%;
-  max-width: 100%;
   word-wrap: break-word;
   text-align: center;
   padding: 0 1rem;
@@ -147,15 +174,16 @@ const styles = `
 .typing-text-delayed {
   overflow: hidden;
   white-space: normal;
-  animation: typing 0.5s steps(30, end) 0.3s;
+  animation: typing 1s ease-out 0.5s;
   margin: 0 auto;
   opacity: 0;
   animation-fill-mode: forwards;
+  display: block;
+  width: 100%;
+  max-width: 500px;
   font-family: 'Minecraft', sans-serif;
   font-size: 1rem;
   letter-spacing: 1px;
-  width: 100%;
-  max-width: 100%;
   word-wrap: break-word;
   text-align: center;
   padding: 0 1rem;
@@ -165,6 +193,7 @@ const styles = `
 
 .animate-fade-in {
   animation: fadeIn 0.3s ease-out forwards;
+  width: 100%;
 }
 
 .animate-bounce {

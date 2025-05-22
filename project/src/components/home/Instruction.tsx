@@ -15,16 +15,24 @@ interface InstructionProps {
 const Instruction: React.FC<InstructionProps> = ({
   textStates = [
     {
-      title: "Bienvenue !",
-      subtitle: "Je suis EcoBoy"
+      title: "",
+      subtitle: "Pour que nous puissons se déplacer"
     },
     {
-      title: "Cliquez pour continuer",
-      subtitle: "Je suis là pour vous aider"
+      title: "",
+      subtitle: "Nous allons utiliser mon super vélo"
     },
     {
-      title: "Découvrez nos services",
-      subtitle: "Nous avons beaucoup à vous offrir"
+      title: "",
+      subtitle: "Allons parcourir la ville à la recherche de déchets"
+    },
+    {
+      title: "Le Saviez-vous ?",
+      subtitle: "En utilisant un vélo électrique au lieu d'une voiture, on peut économiser jusqu'à 90 % d’émissions de CO₂ par trajet."
+    },
+    {
+      title: "",
+      subtitle: "C'est énorme, non ?"
     }
   ]
 }) => {
@@ -45,7 +53,7 @@ const Instruction: React.FC<InstructionProps> = ({
     if (currentState < textStates.length - 1) {
       setCurrentState(prev => prev + 1);
     } else {
-      navigate('/game');
+      navigate('/instruction');
     }
   };
 
@@ -60,7 +68,7 @@ const Instruction: React.FC<InstructionProps> = ({
         }}
       />
 
-      <div className="absolute top-8 left-72 w-[500px] h-[500px] z-20 bg-white rounded-lg" style={{
+      <div className="absolute top-8 left-72 w-[500px] h-[500px] z-20 rounded-lg" style={{
           backgroundImage:
             'url(/image/pj8KDG2jRz4AAAAASUVORK5CYII.png)',
           backgroundPosition: 'center',
@@ -79,7 +87,7 @@ const Instruction: React.FC<InstructionProps> = ({
         }}
       >
         <div className="w-full h-full flex flex-col items-center justify-center cursor-pointer" onClick={handleClick}>
-          <div className="text-center">
+          <div className="text-center mt-48 h-[350px] w-[500px]">
             <div className="animate-fade-in" key={currentState}>
               <p className="text-xl font-bold text-black typing-text">{textStates[currentState].title}</p>
               <p className="text-sm text-black mt-2 typing-text-delayed">{textStates[currentState].subtitle}</p>
@@ -122,10 +130,12 @@ const styles = `
   from {
     width: 0;
     opacity: 0;
+    transform: translateX(-20px);
   }
   to {
     width: 100%;
     opacity: 1;
+    transform: translateX(0);
   }
 }
 
@@ -150,17 +160,21 @@ const styles = `
 .typing-text {
   overflow: hidden;
   white-space: nowrap;
-  animation: typing 1s steps(20, end);
+  animation: typing 1s ease-out;
   margin: 0 auto;
+  display: inline-block;
+  width: 100%;
 }
 
 .typing-text-delayed {
   overflow: hidden;
   white-space: nowrap;
-  animation: typing 1s steps(30, end) 1s;
+  animation: typing 1s ease-out 0.5s;
   margin: 0 auto;
   opacity: 0;
   animation-fill-mode: forwards;
+  display: inline-block;
+  width: 100%;
 }
 
 .animate-float {
@@ -168,7 +182,8 @@ const styles = `
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.5s ease-out forwards;
+  animation: fadeIn 0.3s ease-out forwards;
+  width: 100%;
 }
 
 .animate-bounce {
