@@ -93,7 +93,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       </div>
       <div className="absolute top-8 left-24 w-1/3 h-1/3 z-20" style={{
           backgroundImage:
-            'url(../src/img/Leonardo_Phoenix_10_Create_a_2D_pixel_art_speech_bubble_in_the_3.png',
+            'url(/image/Leonardo_Phoenix_10_Create_a_2D_pixel_art_speech_bubble_in_the_3.png',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'contain'
@@ -115,7 +115,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       </div>
       <div className='absolute h-screen w-screen flex items-end justify-end z-10 animate-float' style={{
           backgroundImage:
-            'url(../src/img/ChatGPT_Image_22_mai_2025__11_50_29-removebg-preview.png)', 
+            'url(/image/ChatGPT_Image_22_mai_2025__11_50_29-removebg-preview.png)', 
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'contain'
