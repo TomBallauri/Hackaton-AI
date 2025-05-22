@@ -34,7 +34,7 @@ const Game: React.FC = () => {
     return (
       <div className="flex items-center justify-center min-h-screen bg-gradient-to-b from-blue-50 to-indigo-100">
         <video
-          src="/Public/Vidéo/Boy.mp4" // Mets ici le chemin de ta vidéo
+          src="/public/vidéo/Boy.mp4" // Mets ici le chemin de ta vidéo
           autoPlay
           className="rounded-xl shadow-lg max-w-full"
           onEnded={() => {
