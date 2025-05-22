@@ -4,10 +4,14 @@ import GameBoard from './GameBoard';
 import GameStart from './GameStart';
 import GameOver from './GameOver';
 import GameHeader from './GameHeader';
+import LevelTransition from './LevelTransition';
+import VictoryScreen from './VictoryScreen';
 
 const Game: React.FC = () => {
   const { gameStarted, gameOver, score, level, maxLevel, resetGame, startGame } = useGame();
   const [showIntro, setShowIntro] = useState(true);
+  const [showLevelTransition, setShowLevelTransition] = useState(false);
+  const [lastLevel, setLastLevel] = useState(level);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -16,6 +20,14 @@ const Game: React.FC = () => {
 
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    if (gameStarted && !gameOver && level !== lastLevel) {
+      setShowLevelTransition(true);
+      setTimeout(() => setShowLevelTransition(false), 1200);
+      setLastLevel(level);
+    }
+  }, [level, gameStarted, gameOver, lastLevel]);
 
   if (showIntro) {
     return (
@@ -31,12 +43,17 @@ const Game: React.FC = () => {
   return (
     <div className="container mx-auto px-4 py-8 min-h-screen flex flex-col">
       <GameHeader />
-      
+      {showLevelTransition && <LevelTransition level={level} />}
       {!gameStarted && !gameOver && <GameStart onStart={startGame} />}
-      
       {gameStarted && !gameOver && <GameBoard />}
-      
-      {gameOver && (
+      {gameOver && level > maxLevel && (
+        <VictoryScreen
+          score={score}
+          maxLevel={maxLevel}
+          onRestart={resetGame}
+        />
+      )}
+      {gameOver && level <= maxLevel && (
         <GameOver 
           score={score} 
           level={level} 
