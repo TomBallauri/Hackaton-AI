@@ -34,28 +34,22 @@ const Basket: React.FC<BasketProps> = ({ category }) => {
   };
 
   return (
-    <div
-      className={`relative flex flex-col items-center justify-end transition-all min-h-[220px] ${isOver ? 'scale-105' : ''}`}
-      onDragOver={handleDragOver}
-      onDragLeave={handleDragLeave}
-      onDrop={handleOnDrop}
-      style={{ width: '120px', height: '160px' }}
-    >
+    <div className="relative flex flex-col items-center justify-end transition-all min-h-[220px]" onDragOver={handleDragOver} onDragLeave={handleDragLeave} onDrop={handleOnDrop} style={{ width: '120px', height: '160px' }}>
       {/* L'image de la poubelle prend toute la div et sert de zone de drop */}
       <img
         src={
-          category.id === 'organique' ? '/src/img/poubelle/poubelle_organic.png' :
-          category.id === 'plastique' ? '/src/img/poubelle/poubelle_plastic.png' :
-          category.id === 'verre' ? '/src/img/poubelle/poubelle_glass.png' :
-          category.id === 'papier' ? '/src/img/poubelle/poubelle_paper.png' : ''
+          category.id === 'organique' ? '/image/poubelle/poubelle_organic.png' :
+          category.id === 'plastique' ? '/image/poubelle/poubelle_plastic.png' :
+          category.id === 'verre' ? '/image/poubelle/poubelle_glass.png' :
+          category.id === 'papier' ? '/image/poubelle/poubelle_paper.png' : ''
         }
         alt={category.name}
-        className={`w-full h-full object-contain drop-shadow-lg ${isOver ? 'ring-4 ring-blue-300' : ''}`}
+        className={`relative w-full h-full object-contain drop-shadow-lg z-10 ${isOver ? 'ring-4 ring-blue-300' : ''}`}
         draggable={false}
         style={{ pointerEvents: 'none', userSelect: 'none' }}
       />
       {/* Affiche les items placés dans la poubelle, superposés en bas */}
-      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex flex-row gap-1 z-10">
+      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex flex-row gap-1 z-20">
         {placedItems.filter(item => !item.correct).map((item) => (
           <img
             key={item.id}
