@@ -54,31 +54,27 @@ const Instruction: React.FC<InstructionProps> = ({
       <div
         className="absolute inset-0 z-0 bg-cover bg-center"
         style={{
-          backgroundImage:
-            'url(../src/img/Leonardo_Phoenix_10_Create_a_2D_pixel_art_background_inspired_0.jpg)', 
+          backgroundImage: 'url(../src/img/Leonardo_Phoenix_10_Create_a_2D_pixel_art_background_inspired_0.jpg)',
           opacity: 0.96,
         }}
-      >
+      />
 
-
-
-      </div>
-
-        <div className="absolute top-8 left-72 w-[500px] h-[500px] z-20 bg-white rounded-lg" style={{
-          backgroundImage:
-            'url(../src/img/pj8KDG2jRz4AAAAASUVORK5CYII.png',
+      <div 
+        className="absolute top-8 left-72 w-[500px] h-[500px] z-20 bg-white rounded-lg" 
+        style={{
+          backgroundImage: 'url(../src/img/pj8KDG2jRz4AAAAASUVORK5CYII.png)',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'contain'
-        }}></div>
+        }}
+      />
 
+      <div className="absolute inset-0 z-10 bg-gradient-to-b from-transparent to-green-900 opacity-50" />
 
-
-      <div className="absolute inset-0 z-10 bg-gradient-to-b from-transparent to-green-900 opacity-50">
-      </div>
-      <div className="absolute bottom-8 left-24 w-1/2 h-1/2 z-20" style={{
-          backgroundImage:
-            'url(../src/img/Leonardo_Phoenix_10_Create_a_2D_pixel_art_speech_bubble_in_the_3.png',
+      <div 
+        className="absolute bottom-8 left-24 w-1/2 h-1/2 z-20" 
+        style={{
+          backgroundImage: 'url(../src/img/Leonardo_Phoenix_10_Create_a_2D_pixel_art_speech_bubble_in_the_3.png)',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'contain'
@@ -98,14 +94,17 @@ const Instruction: React.FC<InstructionProps> = ({
           </div>
         </div>
       </div>
-      <div className='absolute h-screen w-screen flex items-end justify-end z-10 animate-float' style={{
-          backgroundImage:
-            'url(../src/img/ChatGPT_Image_22_mai_2025__11_50_29-removebg-preview.png)', 
+
+      <div 
+        className='absolute h-screen w-screen flex items-end justify-end z-10 animate-float' 
+        style={{
+          backgroundImage: 'url(../src/img/ChatGPT_Image_22_mai_2025__11_50_29-removebg-preview.png)',
           backgroundPosition: 'bottom right',
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'contain',
           transform: 'translateX(-5%) translateY(-5%)'
-        }}></div>
+        }}
+      />
     </section>
   );
 };
@@ -113,44 +112,24 @@ const Instruction: React.FC<InstructionProps> = ({
 // Styles d'animation
 const styles = `
 @keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
 }
 
 @keyframes typing {
-  from {
-    width: 0;
-    opacity: 0;
-  }
-  to {
-    width: 100%;
-    opacity: 1;
-  }
+  from { width: 0; opacity: 0; }
+  to { width: 100%; opacity: 1; }
 }
 
 @keyframes bounce {
-  0%, 100% {
-    transform: translateY(0) rotate(90deg);
-  }
-  50% {
-    transform: translateY(-10px) rotate(90deg);
-  }
+  0%, 100% { transform: translateY(0) rotate(90deg); }
+  50% { transform: translateY(-10px) rotate(90deg); }
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .typing-text {

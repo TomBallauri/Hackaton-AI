@@ -18,13 +18,46 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       subtitle: "Je suis EcoBoy"
     },
     {
-      title: "Cliquez pour continuer",
-      subtitle: "Je suis là pour vous aider"
+      title: "Le saviez-vous ?",
+      subtitle: "Chaque année, un Français produit en "
     },
     {
       title: "",
-      subtitle: "Nous avons beaucoup à vous offrir"
-    }
+      subtitle: "moyenne 530 kg de déchets ménagers"
+    },
+    {
+      title: "",
+      subtitle: "30 % des déchets qu’on jette dans les "
+    },
+    {
+      title: "",
+      subtitle: "ordures ménagères pourraient en réalité être recyclés."
+    },
+        {
+      title: "",
+      subtitle: "Parce que oui, incinérer une tonne de déchets"
+    },
+        {
+      title: "",
+      subtitle: "c’est 271 kg de CO₂ dans l’atmosphère…"
+    },
+    {
+      title: "",
+      subtitle: "Alors que recycler une tonne de papier"
+    },
+    {
+      title: "",
+      subtitle: "c’est 17 arbres sauvés et 2 500 litres d’eau économisés."
+    },
+    {
+      title: "",
+      subtitle: "Alors, prêt à devenir un pro du tri ?"
+    },
+    {
+      title: "",
+      subtitle: "C’est parti pour le jeu ! "
+    },
+
   ]
 }) => {
   const [currentState, setCurrentState] = useState(0);
