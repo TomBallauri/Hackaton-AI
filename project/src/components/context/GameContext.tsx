@@ -102,6 +102,10 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const nextLevel = () => {
+    // Play validation sound
+    const audio = new Audio('/sfx/Validate_sound.mp3');
+    audio.volume = 0.5;
+    audio.play().catch(() => {});
     if (level < maxLevel) {
       setLevel((prev) => prev + 1);
       if (timerRef.current) clearTimeout(timerRef.current);

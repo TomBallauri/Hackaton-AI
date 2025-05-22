@@ -76,7 +76,7 @@ const AnimationSection: React.FC<AnimationSectionProps> = ({
       <div
         className="absolute inset-0 z-0 bg-cover bg-center"
         style={{
-          backgroundImage: 'url(/image/Leonardo_Phoenix_10_Create_a_2D_pixel_art_background_inspired_0.jpg)',
+          backgroundImage: 'url(/image/bg.webp)',
           opacity: 0.96,
         }}
       />

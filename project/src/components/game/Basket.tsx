@@ -24,13 +24,25 @@ const Basket: React.FC<BasketProps> = ({ category }) => {
   const handleOnDrop = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     const itemId = e.dataTransfer.getData('itemId');
+    // On récupère l'item pour savoir si c'est correct ou non
+    const item = items.find(i => i.id === itemId);
+    const isCorrect = item && item.category === category.id;
     handleDrop(itemId, category.id);
     setIsOver(false);
-    
-    // Play drop sound
-    const audio = new Audio('/sounds/drop.mp3');
-    audio.volume = 0.4;
-    audio.play().catch(() => {});
+
+    if (isCorrect) {
+      // Play one of the two trashcan sounds randomly
+      const sounds = ['/sfx/Trashcan sound.mp3', '/sfx/trash2.mp3'];
+      const sound = sounds[Math.floor(Math.random() * sounds.length)];
+      const audio = new Audio(sound);
+      audio.volume = 0.5;
+      audio.play().catch(() => {});
+    } else {
+      // Play error sound
+      const audio = new Audio('/sfx/Error Sound.m4a');
+      audio.volume = 0.5;
+      audio.play().catch(() => {});
+    }
   };
 
   return (
