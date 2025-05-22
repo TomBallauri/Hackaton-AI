@@ -12,6 +12,7 @@ const Game: React.FC = () => {
   const [showIntro, setShowIntro] = useState(true);
   const [showLevelTransition, setShowLevelTransition] = useState(false);
   const [lastLevel, setLastLevel] = useState(level);
+  const [showVideo, setShowVideo] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -32,10 +33,16 @@ const Game: React.FC = () => {
   if (showIntro) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-gradient-to-b from-blue-50 to-indigo-100">
-        <div className="text-center p-8 bg-white rounded-xl shadow-lg transform transition-all duration-1000 scale-100 animate-fadeIn">
-          <h1 className="text-4xl font-bold mb-4 text-blue-600">Sort It Out!</h1>
-          <p className="text-xl text-gray-700">Get ready to sort items into their correct baskets!</p>
-        </div>
+        <video
+          src="/Public/Vidéo/Boy.mp4" // Mets ici le chemin de ta vidéo
+          autoPlay
+          className="rounded-xl shadow-lg max-w-full"
+          onEnded={() => {
+            setShowVideo(false);
+            startGame();
+          }}
+          controls={false}
+        />
       </div>
     );
   }
