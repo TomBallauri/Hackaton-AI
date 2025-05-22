@@ -9,14 +9,15 @@ const GameBoard: React.FC = () => {
   return (
     <div className="flex-1 flex flex-col justify-between min-h-[70vh]">
       {/* Boîtes en haut */}
-      <div className="mb-8">
+      <div className="mb-8 flex flex-col items-center justify-center w-full">
         <h2 className="text-xl font-semibold text-gray-700 text-center">
           Level {level}: Sort the items into the correct baskets
         </h2>
         <p className="text-gray-600 mt-1 text-center">
           Drag each item to its corresponding basket
         </p>
-        <div className="mt-8 flex justify-center gap-8">
+        {/* BasketsArea centré sans background */}
+        <div className="mt-8 flex justify-center w-full">
           <BasketsArea categories={categories} />
         </div>
       </div>
