@@ -3,7 +3,7 @@ import HomePage from './pages/HomePage';
 import GamePage from './pages/GamePage';
 import ScrollToTop from './components/ScrollToTop';
 import AboutPage from './pages/AboutPage';
-
+import InstructionGame from './pages/InstructionGame';
 function App() {
   return (
     <div className="flex flex-col min-h-screen">
@@ -13,6 +13,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/game" element={<GamePage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/instruction" element={<InstructionGame />} />
         </Routes>
       </div>
     </div>
