@@ -34,11 +34,6 @@ const HeroSection: React.FC = () => {
                   Commencer l’aventure <ChevronRight size={20} className="ml-2" />
                 </Button>
               </Link>
-              <Link to="/about">
-                <Button variant="outline" size="lg" className="border-green-600 text-green-700 hover:bg-green-50">
-                  Notre engagement
-                </Button>
-              </Link>
             </div>
           </div>
 
