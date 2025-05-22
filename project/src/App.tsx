@@ -5,6 +5,7 @@ import ScrollToTop from './components/ScrollToTop';
 import AboutPage from './pages/AboutPage';
 import InstructionGame from './pages/InstructionGame';
 import MediaPreloader from './components/MediaPreloader';
+import Ending from './pages/Ending';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/game" element={<GamePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/instruction" element={<InstructionGame />} />
+          <Route path="/end" element={<Ending />} />
         </Routes>
       </div>
     </div>

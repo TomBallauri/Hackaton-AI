@@ -99,7 +99,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           backgroundSize: 'contain'
         }}>
         <div className="w-full h-full flex flex-col items-center justify-center cursor-pointer" onClick={handleClick}>
-          <div className="text-center">
+          <div className="text-center h-[150px] w-[380px]">
             <div className="animate-fade-in" key={currentState}>
               <p className="text-xl font-bold text-black typing-text">{textStates[currentState].title}</p>
               <p className="text-sm text-black mt-2 typing-text-delayed">{textStates[currentState].subtitle}</p>
@@ -141,10 +141,12 @@ const styles = `
   from {
     width: 0;
     opacity: 0;
+    transform: translateX(-20px);
   }
   to {
     width: 100%;
     opacity: 1;
+    transform: translateX(0);
   }
 }
 
@@ -169,17 +171,21 @@ const styles = `
 .typing-text {
   overflow: hidden;
   white-space: nowrap;
-  animation: typing 2s steps(20, end);
+  animation: typing 1s ease-out;
   margin: 0 auto;
+  display: inline-block;
+  width: 100%;
 }
 
 .typing-text-delayed {
   overflow: hidden;
   white-space: nowrap;
-  animation: typing 2s steps(30, end) 2s;
+  animation: typing 1s ease-out 0.5s;
   margin: 0 auto;
   opacity: 0;
   animation-fill-mode: forwards;
+  display: inline-block;
+  width: 100%;
 }
 
 .animate-float {
@@ -187,7 +193,8 @@ const styles = `
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.5s ease-out forwards;
+  animation: fadeIn 0.3s ease-out forwards;
+  width: 100%;
 }
 
 .animate-bounce {
