@@ -41,13 +41,13 @@ const Game: React.FC = () => {
 
   if (showIntro) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black">
         <video
           src="/vidéo/transition.webm"
           autoPlay
           playsInline
           muted
-          className="rounded-xl shadow-lg max-w-full"
+          className="w-full h-full object-cover"
           onEnded={() => {
             setShowVideo(false);
             startGame();
