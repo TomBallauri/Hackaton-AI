@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useGame } from '../context/GameContext';
 import { Category } from '../../types';
-import { iconMap } from '../../data/itemData';
 import { ShoppingBasket } from 'lucide-react';
 
 interface BasketProps {
@@ -34,9 +33,7 @@ const Basket: React.FC<BasketProps> = ({ category }) => {
     audio.volume = 0.4;
     audio.play().catch(() => {});
   };
-  
-  const IconComponent = iconMap[category.icon] || ShoppingBasket;
-  
+
   return (
     <div
       className={`
@@ -49,7 +46,7 @@ const Basket: React.FC<BasketProps> = ({ category }) => {
       onDrop={handleOnDrop}
     >
       <div className={`w-16 h-16 rounded-full flex items-center justify-center mb-3 ${category.color}`}>
-        <IconComponent className="text-white" size={32} />
+        <ShoppingBasket className="text-white" size={32} />
       </div>
       
       <h4 className="text-xl font-semibold text-gray-800 mb-3">{category.name}</h4>
@@ -57,7 +54,6 @@ const Basket: React.FC<BasketProps> = ({ category }) => {
       {placedItems.length > 0 ? (
         <div className="grid grid-cols-3 gap-2 w-full">
           {placedItems.map((item) => {
-            const ItemIcon = iconMap[item.image];
             return (
               <div 
                 key={item.id}
@@ -67,8 +63,7 @@ const Basket: React.FC<BasketProps> = ({ category }) => {
                   transition-all animate-bounce-once
                 `}
               >
-                {ItemIcon && <ItemIcon size={24} className={item.correct ? 'text-green-600' : 'text-red-600'} />}
-                <span className="text-xs font-medium mt-1 text-center">{item.name}</span>
+                <img src={item.image} alt={item.name} className="w-10 h-10 rounded-full" />
               </div>
             );
           })}

@@ -1,59 +1,58 @@
 import { CategoryType, GameItem, Category } from '../types';
-import { Apple, Banana, Carrot, UserCheck as Cheese, Popcorn as Corn, Egg, Grape, Milk, Heading as Bread, Rotate3D as Potato, Cherry as Strawberry, Atom as Tomato, ScrollIcon as Broccoli, Locate as Avocado, GlassWaterIcon as Watermelon, Dice1 as Rice } from 'lucide-react';
 
 // Category definitions with colors and icons
 export const categories: Record<CategoryType, Category> = {
-  fruit: {
-    id: 'fruit',
-    name: 'Fruits',
-    color: 'bg-red-500',
+  organique: {
+    id: 'organique',
+    name: 'Organique',
+    color: 'bg-green-600',
     icon: 'Apple',
   },
-  vegetable: {
-    id: 'vegetable',
-    name: 'Vegetables',
-    color: 'bg-green-500',
-    icon: 'Carrot',
+  plastique: {
+    id: 'plastique',
+    name: 'Plastique',
+    color: 'bg-blue-400',
+    icon: 'Watermelon',
   },
-  dairy: {
-    id: 'dairy',
-    name: 'Dairy',
-    color: 'bg-blue-500',
-    icon: 'Milk',
+  papier: {
+    id: 'papier',
+    name: 'Papier',
+    color: 'bg-yellow-300',
+    icon: 'ScrollIcon',
   },
-  grain: {
-    id: 'grain',
-    name: 'Grains',
-    color: 'bg-yellow-500',
-    icon: 'Wheat',
+  verre: {
+    id: 'verre',
+    name: 'Verre',
+    color: 'bg-teal-400',
+    icon: 'GlassWaterIcon',
   },
 };
 
 // Item data by category
 export const itemsData: Record<CategoryType, Array<{ name: string, image: string }>> = {
-  fruit: [
-    { name: 'Apple', image: 'Apple' },
-    { name: 'Banana', image: 'Banana' },
-    { name: 'Grape', image: 'Grape' },
-    { name: 'Strawberry', image: 'Strawberry' },
-    { name: 'Watermelon', image: 'Watermelon' },
-    { name: 'Avocado', image: 'Avocado' },
+  organique: [
+    { name: 'Pomme', image: '/src/img/item/pomme.png' },
+    { name: 'Banane', image: '/src/img/item/banane.png' },
+    { name: 'Carotte', image: '/src/img/item/carotte.png' },
+    { name: 'Tomate', image: '/src/img/item/tomate.png' },
+    { name: 'Avocat', image: '/src/img/item/avocat.png' },
   ],
-  vegetable: [
-    { name: 'Carrot', image: 'Carrot' },
-    { name: 'Tomato', image: 'Tomato' },
-    { name: 'Potato', image: 'Potato' },
-    { name: 'Broccoli', image: 'Broccoli' },
-    { name: 'Corn', image: 'Corn' },
+  plastique: [
+    { name: 'Bouteille en plastique', image: '/src/img/item/bouteille_plastique.png'},
+    { name: 'Sac plastique', image: '/src/img/item/sac_plastique.png' },
+    { name: 'Pot de yaourt', image: '/src/img/item/pot_yaourt.png' },
+    { name: 'Emballage chips', image: '/src/img/item/emballage_chips.png' },
   ],
-  dairy: [
-    { name: 'Milk', image: 'Milk' },
-    { name: 'Cheese', image: 'Cheese' },
-    { name: 'Egg', image: 'Egg' },
+  papier: [
+    { name: 'Journal', image: '/src/img/item/journal.png' },
+    { name: 'Cahier', image: '/src/img/item/cahier.png' },
+    { name: 'Carton', image: '/src/img/item/carton.png' },
+    { name: 'Papier brouillon', image: '/src/img/item/papier_brouillon.png' },
   ],
-  grain: [
-    { name: 'Bread', image: 'Bread' },
-    { name: 'Rice', image: 'Rice' },
+  verre: [
+    { name: 'Bouteille en verre', image: '/src/img/item/bouteille_verre.png' },
+    { name: 'Pot de confiture', image: '/src/img/item/pot_confiture.png' },
+    { name: 'Bocal', image: '/src/img/item/bocal.png' },
   ],
 };
 
@@ -103,23 +102,3 @@ export function generateGameItems(count: number, categoryTypes: CategoryType[]):
   // Shuffle the array
   return items.sort(() => Math.random() - 0.5);
 }
-
-// Map of icon components by name
-export const iconMap: Record<string, React.ComponentType<any>> = {
-  Apple,
-  Banana,
-  Carrot,
-  Cheese,
-  Corn,
-  Egg,
-  Grape,
-  Milk,
-  Bread,
-  Potato,
-  Strawberry,
-  Tomato,
-  Broccoli,
-  Avocado,
-  Watermelon,
-  Rice,
-};

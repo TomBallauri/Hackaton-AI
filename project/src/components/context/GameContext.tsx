@@ -171,19 +171,19 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const gameLevels: GameLevel[] = [
     {
       level: 1,
-      categories: ['fruit', 'vegetable'],
+      categories: ['organique', 'plastique'],
       itemCount: 8,
       time: 60,
     },
     {
       level: 2,
-      categories: ['fruit', 'vegetable', 'dairy'],
+      categories: ['organique', 'plastique', 'verre'],
       itemCount: 12,
       time: 90,
     },
     {
       level: 3,
-      categories: ['fruit', 'vegetable', 'dairy', 'grain'],
+      categories: ['organique', 'plastique', 'verre', 'papier'],
       itemCount: 16,
       time: 120,
     },
