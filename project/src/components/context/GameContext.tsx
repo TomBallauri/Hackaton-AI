@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import React, { createContext, useState, useContext, useEffect, useRef } from 'react';
 import { CategoryType, GameItem, GameLevel } from '../../types';
 import { generateGameItems } from '../../data/itemData';
 
@@ -36,10 +36,13 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [gameStarted, setGameStarted] = useState(false);
   const [gameOver, setGameOver] = useState(false);
   const [categories, setCategories] = useState<CategoryType[]>([]);
-  const [timer, setTimer] = useState<number | null>(null);
+  const timerRef = useRef<number | null>(null);
+  // Ajoute ce state pour éviter plusieurs triggers
+  const [levelFinished, setLevelFinished] = useState(false);
 
   const setupLevel = (levelNumber: number) => {
     const gameLevel = gameLevels[levelNumber - 1];
+    if (!gameLevel) return; // <-- Ajoute cette ligne pour éviter l'erreur
     setCategories(gameLevel.categories);
     setItems(generateGameItems(gameLevel.itemCount, gameLevel.categories));
     setTimeLeft(gameLevel.time);
@@ -51,20 +54,35 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   useEffect(() => {
     if (gameStarted && !gameOver && timeLeft > 0) {
-      const timerId = window.setTimeout(() => {
+      timerRef.current = window.setTimeout(() => {
         setTimeLeft((prev) => prev - 1);
       }, 1000);
-      
-      setTimer(timerId as unknown as number);
-      
       return () => {
-        if (timer) clearTimeout(timer);
+        if (timerRef.current) clearTimeout(timerRef.current);
       };
-    } else if (timeLeft === 0 && gameStarted) {
+    } else if (timeLeft === 0 && gameStarted && !gameOver) {
       setGameOver(true);
-      if (timer) clearTimeout(timer);
+      if (timerRef.current) clearTimeout(timerRef.current);
     }
-  }, [timeLeft, gameStarted, gameOver, timer]);
+  }, [timeLeft, gameStarted, gameOver]);
+
+  // Vérifie la fin de niveau dès que les items changent
+  useEffect(() => {
+    if (!gameStarted || gameOver || levelFinished) return;
+    const allPlaced = items.length > 0 && items.every((item) => item.placed);
+    if (allPlaced) {
+      setLevelFinished(true);
+      const correctCount = items.filter((item) => item.correct).length;
+      const totalItems = items.length;
+      if (correctCount / totalItems >= 0.7) {
+        nextLevel();
+      } else {
+        setGameOver(true);
+      }
+      // Remet à false pour le prochain niveau
+      setTimeout(() => setLevelFinished(false), 100);
+    }
+  }, [items, gameStarted, gameOver, levelFinished]);
 
   const startGame = () => {
     setGameStarted(true);
@@ -80,14 +98,16 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setScore(0);
     setLevel(1);
     setupLevel(1);
-    if (timer) clearTimeout(timer);
+    if (timerRef.current) clearTimeout(timerRef.current);
   };
 
   const nextLevel = () => {
     if (level < maxLevel) {
       setLevel((prev) => prev + 1);
-      if (timer) clearTimeout(timer);
+      if (timerRef.current) clearTimeout(timerRef.current);
     } else {
+      // Passe au niveau suivant pour déclencher l'écran de victoire
+      setLevel((prev) => prev + 1);
       setGameOver(true);
     }
   };
@@ -99,43 +119,53 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
           const correct = item.category === categoryId;
           if (correct) {
             setScore((prev) => prev + 10);
-            // Play success sound
             const audio = new Audio('/sounds/correct.mp3');
             audio.volume = 0.5;
             audio.play().catch(() => {});
+            return {
+              ...item,
+              placed: true,
+              position: categoryId,
+              correct: true,
+              showError: false,
+            };
           } else {
-            // Play error sound
             const audio = new Audio('/sounds/wrong.mp3');
             audio.volume = 0.5;
             audio.play().catch(() => {});
+            // Affiche l'erreur temporairement
+            return {
+              ...item,
+              placed: true,
+              position: categoryId,
+              correct: false,
+              showError: true,
+            };
           }
-          
-          return {
-            ...item,
-            placed: true,
-            position: categoryId,
-            correct,
-          };
         }
         return item;
       });
     });
 
-    // Check if all items are placed
-    setTimeout(() => {
-      const allPlaced = items.every((item) => item.placed);
-      if (allPlaced) {
-        const correctCount = items.filter((item) => item.correct).length;
-        const totalItems = items.length;
-        
-        // If more than 70% correct, advance to next level
-        if (correctCount / totalItems >= 0.7) {
-          nextLevel();
-        } else {
-          setGameOver(true);
-        }
-      }
-    }, 500);
+    // Si erreur, remet l'objet à sa place initiale après 2s
+    const droppedItem = items.find((item) => item.id === itemId);
+    if (droppedItem && droppedItem.category !== categoryId) {
+      setTimeout(() => {
+              setItems((prevItems) =>
+                prevItems.map((item) =>
+                  item.id === itemId
+                    ? {
+                        ...item,
+                        placed: false,
+                        position: null,
+                        correct: false,
+                        showError: false,
+                      }
+                    : item
+                )
+              );
+            }, 2000);
+    }
   };
 
   const gameLevels: GameLevel[] = [
