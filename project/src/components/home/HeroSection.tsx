@@ -21,7 +21,7 @@ const HeroSection: React.FC = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-green-900 animate-fadeIn">
               Pédalez pour <span className="text-green-600">la Planète</span> <Leaf className="inline ml-2 text-green-500" size={36} />
               <br />
-              Agissez pour l'Écologie batard de tom
+              Agissez pour l'Écologie
             </h1>
 
             <p className="text-lg md:text-xl text-green-800 max-w-lg">
