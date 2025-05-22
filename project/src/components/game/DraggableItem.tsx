@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { GameItem } from '../../types';
-import { iconMap } from '../../data/itemData';
 
 interface DraggableItemProps {
   item: GameItem;
@@ -8,54 +7,82 @@ interface DraggableItemProps {
 
 const DraggableItem: React.FC<DraggableItemProps> = ({ item }) => {
   const [isDragging, setIsDragging] = useState(false);
-  
-  const Icon = iconMap[item.image];
-  
+
+  // Pour que l'image suive le curseur lors du drag, on utilise un effet visuel custom
+  // On affiche l'image "suiveuse" en position absolue si isDragging est true
+  const [mouse, setMouse] = useState<{x: number, y: number} | null>(null);
+
   const handleDragStart = (e: React.DragEvent<HTMLDivElement>) => {
     e.dataTransfer.setData('itemId', item.id);
     setIsDragging(true);
-    
+
     // Play drag sound
     const audio = new Audio('/sounds/drag.mp3');
     audio.volume = 0.3;
     audio.play().catch(() => {});
-    
-    // Create a custom drag image
-    const dragImage = document.createElement('div');
-    dragImage.className = 'bg-white rounded-lg shadow-lg p-2';
-    dragImage.innerHTML = `<div class="text-center">${item.name}</div>`;
-    document.body.appendChild(dragImage);
-    e.dataTransfer.setDragImage(dragImage, 50, 50);
-    
-    // Clean up
-    setTimeout(() => {
-      document.body.removeChild(dragImage);
-    }, 0);
+
+    // Utilise une image transparente comme drag image pour cacher le drag natif
+    const transparent = document.createElement('img');
+    transparent.src =
+      'data:image/svg+xml;base64,' + btoa('<svg xmlns="http://www.w3.org/2000/svg" width="1" height="1"></svg>');
+    e.dataTransfer.setDragImage(transparent, 0, 0);
   };
-  
+
   const handleDragEnd = () => {
     setIsDragging(false);
+    setMouse(null);
   };
-  
+
+  // Met à jour la position de la souris pendant le drag
+  const handleDrag = (e: React.DragEvent<HTMLDivElement>) => {
+    if (isDragging && e.clientX !== 0 && e.clientY !== 0) {
+      setMouse({ x: e.clientX, y: e.clientY });
+    }
+  };
+
+  // Corrige le bug d'image fantôme : retire l'image suiveuse si le drag est annulé (ex: drop en dehors)
+  React.useEffect(() => {
+    if (!isDragging) {
+      setMouse(null);
+    }
+  }, [isDragging]);
+
   return (
-    <div
-      className={`
-        bg-white border-2 p-4 rounded-lg shadow-md cursor-grab transition-all
-        ${isDragging ? 'opacity-50 scale-95' : 'opacity-100 scale-100'}
-        hover:shadow-lg hover:scale-105 active:cursor-grabbing
-        ${item.category === 'fruit' ? 'border-red-300' : 
-          item.category === 'vegetable' ? 'border-green-300' : 
-          item.category === 'dairy' ? 'border-blue-300' : 'border-yellow-300'}
-      `}
-      draggable
-      onDragStart={handleDragStart}
-      onDragEnd={handleDragEnd}
-    >
-      <div className="flex flex-col items-center justify-center gap-2">
-        {Icon && <Icon className="text-gray-700" size={36} />}
-        <span className="text-sm font-medium text-center">{item.name}</span>
+    <>
+      <div
+        className={"active:cursor-grabbing"}
+        draggable
+        onDragStart={handleDragStart}
+        onDragEnd={handleDragEnd}
+        onDrag={handleDrag}
+        style={{ zIndex: isDragging ? 50 : undefined }}
+      >
+        <img
+          src={item.image}
+          alt={item.name}
+          className="w-20 h-20 transition-transform duration-200 hover:scale-110 select-none"
+          style={{ opacity: isDragging ? 0 : 1 }}
+        />
       </div>
-    </div>
+      {isDragging && mouse && (
+        <img
+          src={item.image}
+          alt="drag-preview"
+          className="w-20 h-20 pointer-events-none fixed"
+          style={{
+            left: mouse.x - 32,
+            top: mouse.y - 32,
+            position: 'fixed',
+            zIndex: 1000,
+            borderRadius: '9999px',
+            boxShadow: '0 4px 16px rgba(0,0,0,0.15)',
+            background: 'white',
+            opacity: 1,
+            pointerEvents: 'none',
+          }}
+        />
+      )}
+    </>
   );
 };
 
