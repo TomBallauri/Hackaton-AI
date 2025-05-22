@@ -5,7 +5,7 @@ import Ending from './Ending';
 const HomePage: React.FC = () => {
   return (
     <main>
-      <Ending />
+      <HomePage />
     </main>
   );
 };
