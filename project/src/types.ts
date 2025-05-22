@@ -1,4 +1,4 @@
-export type CategoryType = 'fruit' | 'vegetable' | 'dairy' | 'grain';
+export type CategoryType = 'organique' | 'plastique' | 'verre' | 'papier';
 
 export interface GameItem {
   id: string;
